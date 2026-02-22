@@ -224,8 +224,8 @@ nav {
     display: inline-block;
     padding: 12px 32px;
     border: 1px solid var(--accent);
+    background: var(--accent);
     color: var(--primary);
-    background-color: var(--accent);
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.05em;
@@ -235,8 +235,8 @@ nav {
 }
 
 .btn-outline:hover {
-    background: var(--white);
-    color: var(--accent-hover);
+    background: var(--accent);
+    color: var(--white);
 }
 
 /* Timeline */
@@ -338,6 +338,30 @@ nav {
     padding: 0 2rem;
     opacity: 0.5;
     transition: var(--transition);
+}
+
+.timeline-item .timeline-img {
+    order: 1;
+}
+
+.timeline-item .timeline-content {
+    order: 2;
+}
+
+.timeline-item .timeline-dot {
+    order: 3;
+}
+
+.timeline-item.reverse .timeline-img {
+    order: 1;
+}
+
+.timeline-item.reverse .timeline-content {
+    order: 2;
+}
+
+.timeline-item.reverse .timeline-dot {
+    order: 3;
 }
 
 .timeline-item:hover .timeline-img {
@@ -536,21 +560,76 @@ footer {
 
 /* --- Медіа запити для мобільної версії --- */
 @media (max-width: 768px) {
+    nav {
+        height: 56px;
+        padding: 0 10px;
+    }
 
-    /* Ховаємо меню на мобільних, крім логотипу (для простоти) */
+    .nav-content {
+        padding: 0;
+    }
+
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    /* Ховаємо меню на мобільних, крім логотипу */
     .nav-links {
         display: none;
+    }
+
+    #hero {
+        height: 70vh;
+        padding-top: 56px;
+        background-attachment: scroll;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .btn-outline {
+        font-size: 1rem;
+        padding: 10px 20px;
+    }
+
+    .section-padding {
+        padding: 40px 0;
+    }
+
+    .section-title h2 {
+        font-size: 1.3rem;
+    }
+
+    .divider {
+        width: 3rem;
+        height: 2px;
     }
 
     .timeline::after {
         display: none;
     }
 
+    .timeline {
+        gap: 2rem;
+    }
+
     .timeline-item,
     .timeline-item.reverse {
-        flex-direction: column;
+        flex-direction: column !important;
         align-items: flex-start;
-        gap: 1.5rem;
+        gap: 1rem;
+    }
+
+    .timeline-item.reverse {
+        /* Вимикаємо реверс на мобільних */
+        flex-direction: column !important;
     }
 
     .timeline-content,
@@ -560,16 +639,92 @@ footer {
         text-align: left;
     }
 
+    .timeline-item .timeline-img,
+    .timeline-item.reverse .timeline-img {
+        order: 1;
+    }
+
+    .timeline-item .timeline-content,
+    .timeline-item.reverse .timeline-content {
+        order: 2;
+    }
+
+    .timeline-item .timeline-dot,
+    .timeline-item.reverse .timeline-dot {
+        order: 3;
+    }
+
     .timeline-dot {
         display: none;
     }
 
     .timeline-img {
         opacity: 1;
+        height: 140px;
+    }
+
+    .timeline-img img {
+        height: 140px;
+    }
+
+    .events-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .card-img {
+        height: 140px;
+    }
+
+    .card-body {
+        padding: 1rem;
+    }
+
+    .card-body h3 {
+        font-size: 1rem;
+    }
+
+    .card-body p {
+        font-size: 0.8rem;
+    }
+
+    .card-footer {
+        font-size: 0.7rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
     }
 
     .test-container {
-        padding: 1.5rem;
+        padding: 1rem;
+        box-shadow: none;
+    }
+
+    .question-title {
+        font-size: 1rem;
+    }
+
+    .option {
+        padding: 0.5rem;
+        font-size: 0.95rem;
+    }
+
+    textarea {
+        padding: 0.7rem;
+        font-size: 0.95rem;
+    }
+
+    .btn-submit {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    footer {
+        padding: 1rem 0;
+    }
+
+    .logo-footer {
+        font-size: 1rem;
     }
 }
 
