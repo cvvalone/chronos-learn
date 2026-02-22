@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia - Інтерактивна Історія</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <div>
+                <a href="#" class="logo font-serif">Historia.</a>
+            </div>
+            <div class="nav-links">
+                <a href="#hero">Головна</a>
+                <a href="#timeline">Хронологія</a>
+                <a href="#events">Події</a>
+                <a href="#testing" class="btn-test">Тестування</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="font-serif">Вивчай минуле,<br>щоб зрозуміти майбутнє</h1>
+            <p>Інтерактивна платформа для занурення в ключові епохи людства.</p>
+            <a href="#timeline" class="btn-outline">Почати подорож</a>
+        </div>
+    </section>
+
+    <section id="timeline" class="section-padding relative-overflow">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="font-serif">Хронологія Епох</h2>
+                <div class="divider"></div>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content text-right">
+                        <h3 class="font-serif text-white">Античність</h3>
+                        <span class="date">800 до н.е. — 476 н.е.</span>
+                        <p class="text-muted">Розквіт грецької філософії, римського права та архітектури. Фундамент
+                            сучасної європейської цивілізації.</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-img">
+                        <img src="https://images.unsplash.com/photo-1564399580075-5dfe19c205f3?auto=format&fit=crop&w=500&q=60"
+                            alt="Rome">
+                    </div>
+                </div>
+
+                <div class="timeline-item reverse">
+                    <div class="timeline-img">
+                        <img src="https://i.pinimg.com/1200x/37/05/10/37051007336826ca9f34c8819bcf3f9c.jpg"
+                            alt="Castle">
+                    </div>
+                    <div class="timeline-dot bg-secondary border-accent"></div>
+                    <div class="timeline-content text-left">
+                        <h3 class="font-serif text-white">Середньовіччя</h3>
+                        <span class="date">476 — 1492</span>
+                        <p class="text-muted">Епоха лицарства, формування королівств, поширення християнства та
+                            будівництва готичних соборів.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content text-right">
+                        <h3 class="font-serif text-white">Відродження</h3>
+                        <span class="date">XIV — XVII ст.</span>
+                        <p class="text-muted">Повернення до античних ідеалів, великі географічні відкриття, розквіт
+                            мистецтва та науки.</p>
+                    </div>
+                    <div class="timeline-dot bg-secondary border-accent"></div>
+                    <div class="timeline-img">
+                        <img src="https://images.unsplash.com/photo-1576016770956-debb63d92058?auto=format&fit=crop&w=500&q=60"
+                            alt="Art">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="events" class="section-padding bg-secondary">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="font-serif text-white">Ключові Події</h2>
+                <p class="text-muted">Інтерактивні матеріали для глибокого вивчення</p>
+            </div>
+
+            <div class="events-grid">
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://ukrnova.com/images/2021/11/19/00-gerald-palmer-men-leaving-a-p_large.jpg"
+                            alt="Industrial Revolution">
+                        <div class="badge bg-accent text-primary">Інтерактивна карта</div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="font-serif text-white">Промислова революція</h3>
+                        <p>Перехід від ручного виробництва до машинного. Дізнайтесь, як винахід парового двигуна змінив
+                            світ назавжди.</p>
+                        <div class="card-footer">
+                            <span>10 хв читання</span>
+                            <button class="btn-link">Дослідити →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=800&q=60"
+                            alt="Moon Landing">
+                        <div class="badge bg-blue text-white">Завдання</div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="font-serif text-white">Висадка на Місяць</h3>
+                        <p>"Один маленький крок для людини...". Пройдіть інтерактивний симулятор місії Аполлон-11.</p>
+                        <div class="card-footer">
+                            <span>15 хв практики</span>
+                            <button class="btn-link">Дослідити →</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img">
+                        <img src="https://i.pinimg.com/736x/9d/1d/1d/9d1d1ddd5ce545ed1fa6d20169be94d9.jpg"
+                            alt="Pyramids">
+                        <div class="badge bg-green text-white">Відео 360°</div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="font-serif text-white">Будівництво пірамід</h3>
+                        <p>Архітектурні дива стародавнього Єгипту. Погляньте зсередини на гробниці фараонів.</p>
+                        <div class="card-footer">
+                            <span>8 хв відео</span>
+                            <button class="btn-link">Дослідити →</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="testing" class="section-padding bg-primary border-top">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="font-serif text-accent">Перевірка Знань</h2>
+                <p class="text-muted">Пройдіть тест, щоб закріпити матеріал</p>
+            </div>
+
+            <form class="test-container">
+                <div class="question-group">
+                    <label class="question-title text-white">1. В якому році відбулося падіння Західної Римської
+                        імперії?</label>
+                    <label class="option">
+                        <input type="radio" name="q1">
+                        <span class="text-muted">1492 р.</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1">
+                        <span class="text-muted">476 р.</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1">
+                        <span class="text-muted">325 р.</span>
+                    </label>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-title text-white">2. Оберіть подію, що не належить до ХХ століття:</label>
+                    <label class="option">
+                        <input type="radio" name="q2">
+                        <span class="text-muted">Перша світова війна</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2">
+                        <span class="text-muted">Наполеонівські війни</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2">
+                        <span class="text-muted">Холодна війна</span>
+                    </label>
+                </div>
+
+                <div class="question-group">
+                    <label for="essay" class="question-title text-white">Коротке есе: Як історія впливає на
+                        сьогодення?</label>
+                    <textarea id="essay" rows="4" placeholder="Ваша думка..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Завершити тест</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p class="font-serif text-accent logo-footer">Historia.</p>
+            <p class="text-muted text-sm">&copy; 2026 Всі права захищено. Створено для вивчення історії.</p>
+        </div>
+    </footer>
+
+</body>
+
+</html>
