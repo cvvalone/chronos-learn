@@ -1,3 +1,19 @@
+.answer-icon {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 1.2em;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.answer-correct {
+    color: var(--green);
+}
+
+.answer-wrong {
+    color: red;
+}
+
 :root {
     --primary: #1a1a1a;
     --secondary: #2d2d2d;
