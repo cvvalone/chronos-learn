@@ -1,0 +1,123 @@
+.test-container {
+    max-width: 768px;
+    margin: 0 auto;
+    background: var(--secondary);
+    padding: 3rem;
+    border-radius: 1rem;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.question-group {
+    margin-bottom: 2rem;
+}
+
+.question-title {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    transition: var(--transition);
+    position: relative;
+}
+
+.option:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.option input {
+    margin-right: 0.75rem;
+    accent-color: var(--accent);
+    cursor: pointer;
+}
+
+.option.correct-answer {
+    background: rgba(22, 163, 74, 0.1);
+    border-color: rgba(22, 163, 74, 0.5);
+}
+
+.option.wrong-answer {
+    background: rgba(220, 38, 38, 0.1);
+    border-color: rgba(220, 38, 38, 0.5);
+}
+
+.answer-icon {
+    display: inline-block;
+    margin-left: auto;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.answer-correct {
+    color: var(--green);
+}
+
+.answer-wrong {
+    color: #dc2626;
+}
+
+.form-input {
+    width: 100%;
+    background: var(--primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    outline: none;
+    font-family: inherit;
+}
+
+.form-input:focus {
+    border-color: var(--accent);
+}
+
+.btn-submit {
+    background: var(--accent);
+    color: var(--primary);
+    border: none;
+    padding: 0.75rem 2.5rem;
+    border-radius: 9999px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    transition: var(--transition);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+}
+
+.btn-submit:hover {
+    background: var(--accent-hover);
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .test-container {
+        padding: 1rem;
+        box-shadow: none;
+    }
+
+    .question-title {
+        font-size: 1rem;
+    }
+
+    .option {
+        padding: 0.5rem;
+        font-size: 0.95rem;
+    }
+
+    .btn-submit {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.95rem;
+    }
+}
