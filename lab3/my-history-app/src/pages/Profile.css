@@ -1,0 +1,91 @@
+.profile-hero {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    padding: 6rem 0 4rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 64px;
+}
+
+.profile-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.profile-hero p {
+    font-size: 1.25rem;
+}
+
+.back-link-container {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.tips-container {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.tips-container h3 {
+    font-size: 2rem;
+    margin-bottom: 2.5rem;
+}
+
+.tips-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.tip-card {
+    background: var(--primary);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: var(--transition);
+}
+
+.tip-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--accent);
+}
+
+.tip-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.tip-card h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+}
+
+.tip-card p {
+    font-size: 0.875rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .profile-hero {
+        padding: 4rem 0 2rem;
+        margin-top: 56px;
+    }
+
+    .profile-hero h1 {
+        font-size: 2rem;
+    }
+
+    .profile-hero p {
+        font-size: 1rem;
+    }
+
+    .tips-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .tips-container h3 {
+        font-size: 1.5rem;
+    }
+}
