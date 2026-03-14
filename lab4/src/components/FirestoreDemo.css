@@ -1,0 +1,212 @@
+.firestore-demo {
+    padding: 80px 0;
+    background: var(--primary);
+    min-height: 100vh;
+}
+
+.firestore-demo h2 {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.firestore-demo>.container>.text-muted {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-size: 1.125rem;
+    color: var(--text);
+}
+
+.error-message {
+    background: rgba(220, 38, 38, 0.1);
+    border: 1px solid rgba(220, 38, 38, 0.5);
+    color: #fca5a5;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.demo-section {
+    background: var(--secondary);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 2rem;
+}
+
+.demo-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.demo-section>.text-muted {
+    margin-bottom: 1.5rem;
+}
+
+.events-list,
+.progress-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.event-item,
+.progress-item {
+    background: var(--primary);
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: var(--transition);
+}
+
+.event-item:hover,
+.progress-item:hover {
+    border-color: var(--accent);
+    transform: translateY(-4px);
+}
+
+.event-item h4,
+.progress-item h4 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+}
+
+.event-item>p {
+    margin-bottom: 0.75rem;
+    line-height: 1.6;
+}
+
+.event-id,
+.progress-id {
+    display: inline-block;
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--accent);
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    font-size: 0.75rem;
+    margin-top: 1rem;
+    font-family: 'Courier New', monospace;
+}
+
+.add-event-form {
+    background: var(--primary);
+    padding: 2rem;
+    border-radius: 0.75rem;
+    margin-top: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.form-input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--white);
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.form-input:focus {
+    border-color: var(--accent);
+}
+
+.form-input option {
+    background: var(--secondary);
+    color: var(--white);
+}
+
+textarea.form-input {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.btn-outline {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.875rem;
+}
+
+.btn-outline:hover {
+    background: var(--accent);
+    color: var(--primary);
+}
+
+.btn-submit {
+    background: var(--accent);
+    color: var(--primary);
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.875rem;
+}
+
+.btn-submit:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+}
+
+.auth-required {
+    text-align: center;
+    padding: 3rem;
+}
+
+.text-sm {
+    font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+    .firestore-demo {
+        padding: 40px 0;
+    }
+
+    .firestore-demo h2 {
+        font-size: 1.5rem;
+    }
+
+    .events-list,
+    .progress-list {
+        grid-template-columns: 1fr;
+    }
+
+    .add-event-form {
+        padding: 1rem;
+    }
+}
