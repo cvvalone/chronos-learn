@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import EventCard from './EventCard';
+import { fetchEvents } from '../services/backendApi';
 import './Chronology.css';
 
 /**
@@ -7,62 +8,29 @@ import './Chronology.css';
  * Implements dynamic filtering by historical periods
  */
 const Chronology = ({ onLearnMore }) => {
-    // Historical events data
-    const allEvents = [
-        {
-            id: 1,
-            title: "Античність",
-            date: "800 до н.е. — 476 н.е.",
-            period: "ancient",
-            shortDesc: "Розквіт грецької філософії, римського права та архітектури.",
-            fullDesc: "Античність заклала фундамент сучасної європейської цивілізації. У цей час були створені основи демократії в Афінах, збудовані величні Колізей та Парфенон, а римське право стало базою для багатьох сучасних правових систем.",
-            img: "https://images.unsplash.com/photo-1564399580075-5dfe19c205f3?auto=format&fit=crop&w=500&q=60",
-            map: { lat: 41.8902, lng: 12.4922, zoom: 5, label: "Рим, Італія" }
-        },
-        {
-            id: 2,
-            title: "Середньовіччя",
-            date: "476 — 1492",
-            period: "medieval",
-            shortDesc: "Епоха лицарства, формування королівств та готичних соборів.",
-            fullDesc: "Період, що почався після падіння Західної Римської імперії. Характеризується феодальною системою, домінуванням релігії в житті суспільства, хрестовими походами та будівництвом неприступних замків.",
-            img: "https://i.pinimg.com/1200x/37/05/10/37051007336826ca9f34c8819bcf3f9c.jpg",
-            map: { lat: 48.8584, lng: 2.2945, zoom: 5, label: "Париж, Франція" }
-        },
-        {
-            id: 3,
-            title: "Відродження",
-            date: "XIV — XVII ст.",
-            period: "renaissance",
-            shortDesc: "Повернення до античних ідеалів, великі географічні відкриття.",
-            fullDesc: "Епоха Ренесансу подарувала людству геніїв на кшталт Леонардо да Вінчі та Мікеланджело. Це час стрімкого розвитку науки, мистецтва та початку книгодрукування Гутенбергом.",
-            img: "https://images.unsplash.com/photo-1576016770956-debb63d92058?auto=format&fit=crop&w=500&q=60",
-            map: { lat: 43.7696, lng: 11.2558, zoom: 6, label: "Флоренція, Італія" }
-        },
-        {
-            id: 4,
-            title: "Нові часи",
-            date: "XVII — XIX ст.",
-            period: "modern",
-            shortDesc: "Епоха просвітництва, промислової революції та формування націй.",
-            fullDesc: "Період великих наукових відкриттів, технологічного прогресу та соціальних змін. Час промислової революції, що змінила світ назавжди.",
-            img: "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=500&q=60",
-            map: { lat: 51.5074, lng: -0.1278, zoom: 5, label: "Лондон, Великобританія" }
-        },
-        {
-            id: 5,
-            title: "Новітній час",
-            date: "XX — XXI ст.",
-            period: "contemporary",
-            shortDesc: "Епоха світових воєн, технологічного прориву та глобалізації.",
-            fullDesc: "Сучасна епоха, що включає дві світові війни, космічну гонку, цифрову революцію та становлення глобального інформаційного суспільства.",
-            img: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=500&q=60",
-            map: { lat: 40.7128, lng: -74.0060, zoom: 5, label: "Нью-Йорк, США" }
-        }
-    ];
+    const [allEvents, setAllEvents] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     // State for filtering
     const [selectedPeriod, setSelectedPeriod] = useState('all');
+
+    useEffect(() => {
+        const loadEvents = async () => {
+            try {
+                setLoading(true);
+                const data = await fetchEvents();
+                setAllEvents(Array.isArray(data?.events) ? data.events : []);
+            } catch (err) {
+                console.error('Failed to load events from backend:', err);
+                setError('Не вдалося завантажити події з сервера');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        loadEvents();
+    }, []);
 
     // Filter events based on selected period
     const filteredEvents = selectedPeriod === 'all'
@@ -105,7 +73,11 @@ const Chronology = ({ onLearnMore }) => {
 
                 {/* Timeline with filtered events */}
                 <div className="timeline">
-                    {filteredEvents.length > 0 ? (
+                    {loading && <div className="no-events text-muted">Завантаження подій...</div>}
+
+                    {!loading && error && <div className="no-events text-muted">{error}</div>}
+
+                    {!loading && !error && filteredEvents.length > 0 ? (
                         filteredEvents.map((event, index) => (
                             <EventCard
                                 key={event.id}

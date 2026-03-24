@@ -7,7 +7,6 @@
 
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
 
 // Firebase project configuration
 const firebaseConfig = {
@@ -28,11 +27,5 @@ const app = initializeApp(firebaseConfig);
  * Handles user sign up, sign in, sign out, and authentication state
  */
 export const auth = getAuth(app);
-
-/**
- * Firebase Firestore Database
- * Stores historical events, quiz questions, and user progress
- */
-export const db = getFirestore(app);
 
 export default app;
