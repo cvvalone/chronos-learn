@@ -1,19 +1,21 @@
 const express = require('express');
 const cors = require('cors');
-const admin = require('firebase-admin');
-const path = require('path');
+const admin = require("firebase-admin");
+const fs = require("fs");
 
-const serviceAccount = require('./serviceAccountKey.json');
+let serviceAccount;
 
-const app = express();
-const PORT = process.env.PORT || 5000;
-
-// Initialize Firebase Admin SDK once for the process.
-if (!admin.apps.length) {
-    admin.initializeApp({
-        credential: admin.credential.cert(serviceAccount),
-    });
+// Перевіряємо, чи існує файл у захищеній папці Render
+if (fs.existsSync("/etc/secrets/serviceAccountKey.json")) {
+    serviceAccount = require("/etc/secrets/serviceAccountKey.json");
+} else {
+    // Якщо ні, значить ми на локальному комп'ютері
+    serviceAccount = require("./serviceAccountKey.json");
 }
+
+admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount)
+});
 
 const db = admin.firestore();
 
