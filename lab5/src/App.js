@@ -9,6 +9,7 @@ import { AuthProvider } from './context/AuthContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Testing from './pages/Testing';
 import AuthPage from './pages/AuthPage';
+import { saveTestResult } from './services/backendApi';
 
 /**
  * Main App Component
@@ -33,7 +34,7 @@ function App() {
   }, [progress]);
 
   // Handle quiz completion
-  const handleQuizComplete = (score, total, userName) => {
+  const handleQuizComplete = async (score, total, userName, userId) => {
     const newAttempt = {
       score,
       total,
@@ -41,6 +42,22 @@ function App() {
       timestamp: new Date().toISOString()
     };
     setProgress([...progress, newAttempt]);
+
+    const resolvedUserId = userId || userName?.trim()?.toLowerCase();
+
+    if (resolvedUserId) {
+      try {
+        await saveTestResult({
+          userId: resolvedUserId,
+          score,
+          testId: 'history-quiz'
+        });
+
+        localStorage.setItem('activeTestUserId', resolvedUserId);
+      } catch (error) {
+        console.error('Failed to save test result to backend:', error);
+      }
+    }
   };
 
   return (

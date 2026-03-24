@@ -1,12 +1,39 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ProgressChart from '../components/ProgressChart';
+import { useAuth } from '../context/AuthContext';
+import { fetchAverageScore } from '../services/backendApi';
 import './Profile.css';
 
 /**
  * Profile Page - Displays user progress and statistics
  */
 const Profile = ({ progress }) => {
+    const { user } = useAuth();
+    const [averageScore, setAverageScore] = useState(0);
+    const [averageLoading, setAverageLoading] = useState(true);
+
+    useEffect(() => {
+        const loadAverage = async () => {
+            try {
+                setAverageLoading(true);
+
+                const fallbackUserId = localStorage.getItem('activeTestUserId');
+                const userId = user?.uid || fallbackUserId;
+                const data = await fetchAverageScore(userId);
+
+                setAverageScore(data?.averageScore ?? 0);
+            } catch (error) {
+                console.error('Failed to load average score:', error);
+                setAverageScore(0);
+            } finally {
+                setAverageLoading(false);
+            }
+        };
+
+        loadAverage();
+    }, [user]);
+
     return (
         <div className="profile-page">
             {/* Hero Section */}
@@ -20,6 +47,13 @@ const Profile = ({ progress }) => {
             {/* Progress Section */}
             <section className="section-padding bg-primary">
                 <div className="container">
+                    <div className="tips-container" style={{ marginBottom: '24px' }}>
+                        <h3 className="font-serif text-white">Середній бал (з backend)</h3>
+                        <p className="text-muted" style={{ marginTop: '8px' }}>
+                            {averageLoading ? 'Завантаження...' : `${averageScore} балів`}
+                        </p>
+                    </div>
+
                     <ProgressChart progress={progress} />
 
                     <div className="back-link-container">

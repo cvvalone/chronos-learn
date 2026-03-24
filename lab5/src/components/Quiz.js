@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import './Quiz.css';
+import { useAuth } from '../context/AuthContext';
 
 /**
  * Quiz Component - Interactive quiz to test historical knowledge
  * @param {function} onQuizComplete - Callback when quiz is completed with score
  */
 const Quiz = ({ onQuizComplete }) => {
+    const { user } = useAuth();
     const [answers, setAnswers] = useState({
         q1: '',
         q2: ''
@@ -53,16 +55,13 @@ const Quiz = ({ onQuizComplete }) => {
 
         // Call the callback to update progress
         if (onQuizComplete) {
-            onQuizComplete(score, 2, userName);
+            const resolvedUserId = user?.uid || userName.trim().toLowerCase();
+            onQuizComplete(score, 2, userName, resolvedUserId);
         }
     };
 
     const handleAnswerChange = (question, value) => {
         setAnswers({ ...answers, [question]: value });
-    };
-
-    const isCorrect = (question, value) => {
-        return correctAnswers[question] === value;
     };
 
     return (
