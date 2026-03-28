@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
-const admin = require('firebase-admin');
+const { initializeApp, cert } = require('firebase-admin/app');
+const { getFirestore, FieldValue } = require('firebase-admin/firestore');
 const path = require('path');
 const fs = require("fs");
-
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -18,11 +18,11 @@ if (fs.existsSync("/etc/secrets/serviceAccountKey.json")) {
     serviceAccount = require("./serviceAccountKey.json");
 }
 
-admin.initializeApp({
-    credential: admin.credential.cert(serviceAccount)
+initializeApp({
+    credential: cert(serviceAccount)
 });
 
-const db = admin.firestore();
+const db = getFirestore();
 
 // Core middleware.
 app.use(cors());
@@ -97,7 +97,7 @@ app.post('/api/test-results', async (req, res) => {
             userId,
             score,
             testId: testId || null,
-            completedAt: admin.firestore.FieldValue.serverTimestamp(),
+            completedAt: FieldValue.serverTimestamp(),
             completedDateISO: new Date().toISOString(),
         };
 
@@ -242,7 +242,7 @@ app.post('/api/events', async (req, res) => {
             fullDesc: fullDesc || '',
             img: img || '',
             map: map || null,
-            createdAt: admin.firestore.FieldValue.serverTimestamp(),
+            createdAt: FieldValue.serverTimestamp(),
             createdAtISO: new Date().toISOString(),
         };
 
